@@ -2,7 +2,7 @@
 #include<string>
 
 //CppShogi2：CppShogi1からの変更点として、思考局面を受け取る機能を追加。
-//思考局面は、56行目のpositionで確認できる。
+//思考局面：46行目のpositionで確認できる。
 
 int main() {
 	std::string cmd;
@@ -39,12 +39,9 @@ int main() {
 			//対局開始の合図
 			//何もしない
 		}
-		else if (cmd == "startpos") {
-			std::cout << "startposコマンドを受け取りました。" << "\n";
-		}
 		else if (cmd == "position") {
 			//positionコマンドの後に局面が送られてくるため、局面受け取りのを準備する。
-			std::cout << "Positionコマンド:" << "\n";
+			std::cout << "positionコマンド\n";
 			position.clear();
 			position="position";
 			positionFlg = true;
@@ -54,7 +51,7 @@ int main() {
 			//先手26歩を指す。
 			positionFlg = false;
 			std::cout << "思考局面：" << position << "\n";
-			std::cout << "CmdGo\n";
+			std::cout << "goコマンド\n";
 			std::cout << "bestmove 2g2f\n";
 		}
 		else if (cmd == "quit") {
