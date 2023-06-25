@@ -3,12 +3,11 @@
 #include <string>
 #include <vector>
 
-//c++’èÕƒeƒXƒgƒR[ƒhB
-//pythonŠÂ‹«‚Åg—p‚µ‚Ä‚¢‚éƒR[ƒh‚ğc++‚É’u‚«Š·‚¦‚½B“®ìŠm”F‚ğ‚µ‚½‚Æ‚±‚ëpythonŠÂ‹«‚Æ“¯‚¶“®ì‚ğ‚µ‚Ä‚¢‚éB
-//æèŸ—˜‚Ì24000Šû•ˆ“Ç‚İ‚İ
-//ŒãèŸ—˜‚Ì17635Šû•ˆ“Ç‚İ‚İ
-//Œ»İ‚Ì‹Ç–Êƒf[ƒ^now_position_str‚ğ—^‚¦AŸ‚Ìˆêè‚ğæ“¾‚·‚éƒeƒXƒgƒR[ƒh
-
+//c++å®šè·¡ãƒ†ã‚¹ãƒˆã‚³ãƒ¼ãƒ‰ã€‚
+//pythonç’°å¢ƒã§ä½¿ç”¨ã—ã¦ã„ã‚‹ã‚³ãƒ¼ãƒ‰ã‚’c++ã«ç½®ãæ›ãˆãŸã€‚å‹•ä½œç¢ºèªã‚’ã—ãŸã¨ã“ã‚pythonç’°å¢ƒã¨åŒã˜å‹•ä½œã‚’ã—ã¦ã„ã‚‹ã€‚
+//å…ˆæ‰‹å‹åˆ©ã®24000æ£‹è­œèª­ã¿è¾¼ã¿
+//å¾Œæ‰‹å‹åˆ©ã®17635æ£‹è­œèª­ã¿è¾¼ã¿
+//ç¾åœ¨ã®å±€é¢ãƒ‡ãƒ¼ã‚¿now_position_strã‚’ä¸ãˆã€æ¬¡ã®ä¸€æ‰‹ã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã‚³ãƒ¼ãƒ‰
 
 std::vector<std::string> split(std::string str, std::string sep) {
     std::string separator = sep;
@@ -20,28 +19,28 @@ std::vector<std::string> split(std::string str, std::string sep) {
     for (; pos < l && (pos = tstr.find(separator, pos)) != std::string::npos; prev = (pos += sl)) {
         result.emplace_back(tstr, prev, pos - prev);
     }
-    //std::cout << "resultƒTƒCƒYF" << result.size() << '\n';
+    //std::cout << "resultã‚µã‚¤ã‚ºï¼š" << result.size() << '\n';
     return result;
 }
 
 int main() {
     std::vector<std::vector<std::string>> sente_vector;
     std::vector<std::vector<std::string>> gote_vector;
-    std::ifstream sente_file("win_sente.txt"); // “Ç‚İ‚Şƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğw’è
+    std::ifstream sente_file("win_sente.txt"); // èª­ã¿è¾¼ã‚€ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’æŒ‡å®š
     std::ifstream gote_file("win_gote.txt");
     std::string sente_line;
     std::string gote_line;
 
     if (!sente_file) {
-        //ƒGƒ‰[ˆ—
+        //ã‚¨ãƒ©ãƒ¼å‡¦ç†
         std::cout << "file not found win_sente.txt" << std::endl;
     }
     else {
         sente_vector.clear();
-        //1s‚¸‚Â“Ç‚İ‚Ş
+        //1è¡Œãšã¤èª­ã¿è¾¼ã‚€
         while (std::getline(sente_file, sente_line)) {
             std::vector<std::string> temp_v = split(sente_line,",");
-            //ƒxƒNƒ^[‚É’Ç‰Á
+            //ãƒ™ã‚¯ã‚¿ãƒ¼ã«è¿½åŠ 
             sente_vector.push_back(temp_v);
         }
         std::cout << "sente vector size:" << sente_vector.size() << std::endl;
@@ -66,40 +65,40 @@ int main() {
     
     std::cout << "position_str:" << now_position_str << std::endl;
     std::vector< std::string > now_position_vector = split(now_position_str, " ");
-    //’…è‚Ì‚İ‚É‚·‚éB
-    //position,startpos,moves‚Ííœ‚·‚éB
+    //ç€æ‰‹ã®ã¿ã«ã™ã‚‹ã€‚
+    //position,startpos,movesã¯å‰Šé™¤ã™ã‚‹ã€‚
     for (int i = 0; i < now_position_vector.size(); i++) {
         if (now_position_vector[i]=="position" || now_position_vector[i] == "startpos" || now_position_vector[i] == "moves") {
             std::cout << "delete str:" << now_position_vector[i] << std::endl;
-            //íœ‚·‚éB
+            //å‰Šé™¤ã™ã‚‹ã€‚
             now_position_vector.erase(now_position_vector.begin()+i);
             i--;
         }
     }
-    std::cout << "position_vectorƒTƒCƒYF" << now_position_vector.size() << std::endl;
-    std::cout << "position_vector[0]F" << now_position_vector[0] << std::endl;
-    std::cout << "position_vector[1]F" << now_position_vector[1] << std::endl;
+    std::cout << "position_vectorã‚µã‚¤ã‚ºï¼š" << now_position_vector.size() << std::endl;
+    std::cout << "position_vector[0]ï¼š" << now_position_vector[0] << std::endl;
+    std::cout << "position_vector[1]ï¼š" << now_position_vector[1] << std::endl;
 
-    //’èÕ‚©‚çŸ‚Ìˆêè‚ğ•Ô‚·ˆ—
-    std::vector<std::string> joseki_vector;//Œó•âè‚ğŠi”[‚µ‚Ä‚¨‚­ƒxƒNƒ^[
+    //å®šè·¡ã‹ã‚‰æ¬¡ã®ä¸€æ‰‹ã‚’è¿”ã™å‡¦ç†
+    std::vector<std::string> joseki_vector;//å€™è£œæ‰‹ã‚’æ ¼ç´ã—ã¦ãŠããƒ™ã‚¯ã‚¿ãƒ¼
 
     if (now_position_vector.size() % 2 == 0) {
-        std::cout << "è”:" << now_position_vector.size() << " æè‚Å‚·B" << std::endl;
+        std::cout << "æ‰‹æ•°:" << now_position_vector.size() << " å…ˆæ‰‹ã§ã™ã€‚" << std::endl;
         std::cout << "sente_vector size:" << sente_vector.size() << std::endl;
-        joseki_vector.clear();//’èÕƒxƒNƒ^[‚Ì‰Šú‰»
+        joseki_vector.clear();//å®šè·¡ãƒ™ã‚¯ã‚¿ãƒ¼ã®åˆæœŸåŒ–
 
         for (int i = 0; i < sente_vector.size(); i++) {
-            //std::cout << "æèAŠû•ˆ’·‚³F" << sente_vector[i].size() << std::endl;
+            //std::cout << "å…ˆæ‰‹ã€æ£‹è­œé•·ã•ï¼š" << sente_vector[i].size() << std::endl;
             if (now_position_vector.size() >= sente_vector[i].size()) {
-                //Œ»İ‚Ìè”‚æ‚è’Z‚¢Šû•ˆ‚Ìê‡‚Í”²‚¯‚é
-                 std::cout << "”²‚¯‚Ü‚·BF" << now_position_vector.size() << "F" << sente_vector[i].size() << std::endl;
+                //ç¾åœ¨ã®æ‰‹æ•°ã‚ˆã‚ŠçŸ­ã„æ£‹è­œã®å ´åˆã¯æŠœã‘ã‚‹
+                 std::cout << "æŠœã‘ã¾ã™ã€‚ï¼š" << now_position_vector.size() << "ï¼š" << sente_vector[i].size() << std::endl;
                 continue;
             }
             if (now_position_vector.size() == 0) {
-                //‰è‚Ìˆ—
+                //åˆæ‰‹ã®å‡¦ç†
                 joseki_vector.push_back(sente_vector[i][0]);
             }else {
-                //‰èˆÈŠO‚Ìˆ—
+                //åˆæ‰‹ä»¥å¤–ã®å‡¦ç†
                 for (int j = 0; j < now_position_vector.size(); j++) {
                     if (now_position_vector[j] != sente_vector[i][j]) {
                         break;
@@ -111,29 +110,29 @@ int main() {
             }
             
         }
-        std::cout << "æèA’èÕŒó•âíƒTƒCƒYF" << joseki_vector.size() << std::endl;
-        std::cout << "æèA’èÕŒó•âí[0]F" << joseki_vector[0] << std::endl;
-        std::cout << "æèA’èÕŒó•âí[1]F" << joseki_vector[1] << std::endl;
-        std::cout << "æèA’èÕŒó•âí[2]F" << joseki_vector[2] << std::endl;
-        std::cout << "æèA’èÕŒó•âí[3]F" << joseki_vector[3] << std::endl;
-        std::cout << "æèA’èÕŒó•âí[4]F" << joseki_vector[4] << std::endl;
+        std::cout << "å…ˆæ‰‹ã€å®šè·¡å€™è£œç¨®ã‚µã‚¤ã‚ºï¼š" << joseki_vector.size() << std::endl;
+        std::cout << "å…ˆæ‰‹ã€å®šè·¡å€™è£œç¨®[0]ï¼š" << joseki_vector[0] << std::endl;
+        std::cout << "å…ˆæ‰‹ã€å®šè·¡å€™è£œç¨®[1]ï¼š" << joseki_vector[1] << std::endl;
+        std::cout << "å…ˆæ‰‹ã€å®šè·¡å€™è£œç¨®[2]ï¼š" << joseki_vector[2] << std::endl;
+        std::cout << "å…ˆæ‰‹ã€å®šè·¡å€™è£œç¨®[3]ï¼š" << joseki_vector[3] << std::endl;
+        std::cout << "å…ˆæ‰‹ã€å®šè·¡å€™è£œç¨®[4]ï¼š" << joseki_vector[4] << std::endl;
 
     }else {
-        std::cout << "è”:" << now_position_vector.size() << " Œãè‚Å‚·B" << std::endl;
+        std::cout << "æ‰‹æ•°:" << now_position_vector.size() << " å¾Œæ‰‹ã§ã™ã€‚" << std::endl;
         std::cout << "gote_vector size:" << sente_vector.size() << std::endl;
-        joseki_vector.clear();//’èÕƒxƒNƒ^[‚Ì‰Šú‰»
+        joseki_vector.clear();//å®šè·¡ãƒ™ã‚¯ã‚¿ãƒ¼ã®åˆæœŸåŒ–
 
         for (int i = 0; i < gote_vector.size(); i++) {
             if (now_position_vector.size() >= gote_vector[i].size()) {
-                //Œ»İ‚Ìè”‚æ‚è’Z‚¢Šû•ˆ‚Ìê‡‚Í”²‚¯‚é
+                //ç¾åœ¨ã®æ‰‹æ•°ã‚ˆã‚ŠçŸ­ã„æ£‹è­œã®å ´åˆã¯æŠœã‘ã‚‹
                 continue;
             }
             if (now_position_vector.size() == 1) {
-                //Œãè‚Ì‰è‚Ìˆ—
+                //å¾Œæ‰‹ã®åˆæ‰‹ã®å‡¦ç†
                 joseki_vector.push_back(gote_vector[i][1]);
             }
             else {
-                //‰èˆÈŠO‚Ìˆ—
+                //åˆæ‰‹ä»¥å¤–ã®å‡¦ç†
                 for (int j = 0; j < now_position_vector.size(); j++) {
                     if (now_position_vector[j] != gote_vector[i][j]) {
                         break;
@@ -145,12 +144,12 @@ int main() {
             }
 
         }
-        std::cout << "æèA’èÕŒó•âíƒTƒCƒYF" << joseki_vector.size() << std::endl;
-        std::cout << "æèA’èÕŒó•âí[0]F" << joseki_vector[0] << std::endl;
-        std::cout << "æèA’èÕŒó•âí[1]F" << joseki_vector[1] << std::endl;
-        std::cout << "æèA’èÕŒó•âí[2]F" << joseki_vector[2] << std::endl;
-        std::cout << "æèA’èÕŒó•âí[3]F" << joseki_vector[3] << std::endl;
-        std::cout << "æèA’èÕŒó•âí[4]F" << joseki_vector[4] << std::endl;
+        std::cout << "å…ˆæ‰‹ã€å®šè·¡å€™è£œç¨®ã‚µã‚¤ã‚ºï¼š" << joseki_vector.size() << std::endl;
+        std::cout << "å…ˆæ‰‹ã€å®šè·¡å€™è£œç¨®[0]ï¼š" << joseki_vector[0] << std::endl;
+        std::cout << "å…ˆæ‰‹ã€å®šè·¡å€™è£œç¨®[1]ï¼š" << joseki_vector[1] << std::endl;
+        std::cout << "å…ˆæ‰‹ã€å®šè·¡å€™è£œç¨®[2]ï¼š" << joseki_vector[2] << std::endl;
+        std::cout << "å…ˆæ‰‹ã€å®šè·¡å€™è£œç¨®[3]ï¼š" << joseki_vector[3] << std::endl;
+        std::cout << "å…ˆæ‰‹ã€å®šè·¡å€™è£œç¨®[4]ï¼š" << joseki_vector[4] << std::endl;
     }
 
     return (0);
