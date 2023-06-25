@@ -1,66 +1,66 @@
 #include<iostream>
 #include<string>
 
-//CppShogi2FCppShogi1‚©‚ç‚Ì•ÏX“_‚Æ‚µ‚ÄAvl‹Ç–Ê‚ğó‚¯æ‚é‹@”\‚ğ’Ç‰ÁB
-//vl‹Ç–ÊF46s–Ú‚Ìposition‚ÅŠm”F‚Å‚«‚éB
+//CppShogi2ï¼šCppShogi1ã‹ã‚‰ã®å¤‰æ›´ç‚¹ã¨ã—ã¦ã€æ€è€ƒå±€é¢ã‚’å—ã‘å–ã‚‹æ©Ÿèƒ½ã‚’è¿½åŠ ã€‚
+//æ€è€ƒå±€é¢ï¼š53è¡Œç›®ã®positionã§ç¢ºèªã§ãã‚‹ã€‚
 
 int main() {
 	std::string cmd;
 	std::string position;
 	bool positionFlg = false;
-	std::cout << "ƒRƒ}ƒ“ƒh‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B\n";
-	std::cout << "quit‚ÅI—¹‚µ‚Ü‚·B\n";
+	std::cout << "ã‚³ãƒãƒ³ãƒ‰ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚\n";
+	std::cout << "quitã§çµ‚äº†ã—ã¾ã™ã€‚\n";
 
 	while (true) {
 		std::cin >> cmd;
-		//std::cout << "ó‚¯æ‚Á‚½ƒRƒ}ƒ“ƒhF" << cmd << "\n";
+		//std::cout << "å—ã‘å–ã£ãŸã‚³ãƒãƒ³ãƒ‰ï¼š" << cmd << "\n";
 		
 		if(positionFlg && cmd!="go") {
-			//‹Ç–Êî•ñ‚Ìó‚¯æ‚è
-			//•½è‚Ístartpos‚©‚çn‚Ü‚é
-			//—áFposition startpos moves 7g7f 3c3d 2g2f
+			//å±€é¢æƒ…å ±ã®å—ã‘å–ã‚Š
+			//å¹³æ‰‹ã¯startposã‹ã‚‰å§‹ã¾ã‚‹
+			//ä¾‹ï¼šposition startpos moves 7g7f 3c3d 2g2f
 			position += " ";
 			position += cmd;
-			std::cout << "ó‚¯æ‚Á‚½‹Ç–Êî•ñF" << cmd << "\n";
+			std::cout << "å—ã‘å–ã£ãŸå±€é¢æƒ…å ±ï¼š" << cmd << "\n";
 		}
 		if (cmd == "usi") {
-			//ƒ\ƒtƒg–¼
+			//ã‚½ãƒ•ãƒˆå
 			std::cout << "id name CppShogi2\n";
-			//ŠJ”­Ò–¼
+			//é–‹ç™ºè€…å
 			std::cout << "id author yukawa\n";
 			std::cout << "usiok\n";
 		}
 		else if (cmd == "isready") {
-			//‘Î‹Ç€”õ
-			//“Ç‚İ‚İ‚ª•K—v‚È‚ç‚±‚±‚Åˆ—‚·‚éB
+			//å¯¾å±€æº–å‚™
+			//èª­ã¿è¾¼ã¿ãŒå¿…è¦ãªã‚‰ã“ã“ã§å‡¦ç†ã™ã‚‹ã€‚
 			std::cout << "readyok\n";
 		}
 		else if (cmd == "usinewgame") {
-			//‘Î‹ÇŠJn‚Ì‡}
-			//‰½‚à‚µ‚È‚¢
+			//å¯¾å±€é–‹å§‹ã®åˆå›³
+			//ä½•ã‚‚ã—ãªã„
 		}
 		else if (cmd == "position") {
-			//positionƒRƒ}ƒ“ƒh‚ÌŒã‚É‹Ç–Ê‚ª‘—‚ç‚ê‚Ä‚­‚é‚½‚ßA‹Ç–Êó‚¯æ‚è‚Ì‚ğ€”õ‚·‚éB
-			std::cout << "positionƒRƒ}ƒ“ƒh\n";
+			//positionã‚³ãƒãƒ³ãƒ‰ã®å¾Œã«å±€é¢ãŒé€ã‚‰ã‚Œã¦ãã‚‹ãŸã‚ã€å±€é¢å—ã‘å–ã‚Šã®ã‚’æº–å‚™ã™ã‚‹ã€‚
+			std::cout << "positionã‚³ãƒãƒ³ãƒ‰\n";
 			position.clear();
 			position="position";
 			positionFlg = true;
 		}
 		else if (cmd == "go") {
-			//vlŠJn
-			//æè26•à‚ğw‚·B
+			//æ€è€ƒé–‹å§‹
+			//å…ˆæ‰‹26æ­©ã‚’æŒ‡ã™ã€‚
 			positionFlg = false;
-			std::cout << "vl‹Ç–ÊF" << position << "\n";
-			std::cout << "goƒRƒ}ƒ“ƒh\n";
+			std::cout << "æ€è€ƒå±€é¢ï¼š" << position << "\n";
+			std::cout << "goã‚³ãƒãƒ³ãƒ‰\n";
 			std::cout << "bestmove 2g2f\n";
 		}
 		else if (cmd == "quit") {
-			//ƒGƒ“ƒWƒ“’â~
+			//ã‚¨ãƒ³ã‚¸ãƒ³åœæ­¢
 			break;
 		}
 	}
-	//ƒGƒ“ƒWƒ“‚ğI—¹‚³‚¹‚éB
-	std::cout << "I—¹‚µ‚Ü‚·B\n";
+	//ã‚¨ãƒ³ã‚¸ãƒ³ã‚’çµ‚äº†ã•ã›ã‚‹ã€‚
+	std::cout << "çµ‚äº†ã—ã¾ã™ã€‚\n";
 	exit(1);
 	return 0;
 }
