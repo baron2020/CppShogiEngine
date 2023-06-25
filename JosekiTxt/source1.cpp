@@ -3,10 +3,10 @@
 #include <string>
 #include <vector>
 
-//s”‚ª‘‚¦‚Ä‚à–â‘è‚È‚­“Ç‚İ‚İ‚ªo—ˆ‚é‚©Šm”F‚·‚éB
-//win_sente.txt:24000s
-//win_gote.txt :17635s
-//ƒJƒ“ƒ}‚Å‹æØ‚èAƒxƒNƒ^[‚É’Ç‰Á‚·‚éB
+//è¡Œæ•°ãŒå¢—ãˆã¦ã‚‚å•é¡Œãªãèª­ã¿è¾¼ã¿ãŒå‡ºæ¥ã‚‹ã‹ç¢ºèªã™ã‚‹ã€‚
+//win_sente.txt:24000è¡Œ
+//win_gote.txt :17635è¡Œ
+//ã‚«ãƒ³ãƒã§åŒºåˆ‡ã‚Šã€ãƒ™ã‚¯ã‚¿ãƒ¼ã«è¿½åŠ ã™ã‚‹ã€‚
 
 std::vector<std::string> split(std::string str, std::string sep) {
     std::string separator = sep;
@@ -18,7 +18,7 @@ std::vector<std::string> split(std::string str, std::string sep) {
     for (; pos < l && (pos = tstr.find(separator, pos)) != std::string::npos; prev = (pos += sl)) {
         result.emplace_back(tstr, prev, pos - prev);
     }
-    //std::cout << "resultƒTƒCƒYF" << result.size() << '\n';
+    //std::cout << "resultã‚µã‚¤ã‚ºï¼š" << result.size() << '\n';
     return result;
 }
 
@@ -28,38 +28,38 @@ int main() {
     //sente_vector.clear();
     //gote_vector.clear();
 
-    std::ifstream sente_file("win_sente.txt"); // “Ç‚İ‚Şƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğw’è
+    std::ifstream sente_file("win_sente.txt"); // èª­ã¿è¾¼ã‚€ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’æŒ‡å®š
     std::ifstream gote_file("win_gote.txt");
     std::string sente_line;
     std::string gote_line;
 
     if (!sente_file) {
-        //ƒGƒ‰[ˆ—
-        std::cout << "ƒtƒ@ƒCƒ‹‚ª‘¶İ‚µ‚Ü‚¹‚ñB1" << std::endl;
+        //ã‚¨ãƒ©ãƒ¼å‡¦ç†
+        std::cout << "ãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã—ã¾ã›ã‚“ã€‚1" << std::endl;
     }
     else {
-        //1s‚¸‚Â“Ç‚İ‚Ş
+        //1è¡Œãšã¤èª­ã¿è¾¼ã‚€
         while (std::getline(sente_file, sente_line)) {
             //std::cout << sente_line << std::endl;
             std::vector<std::string> temp_v = split(sente_line,",");
-            //ƒxƒNƒ^[‚É’Ç‰Á
+            //ãƒ™ã‚¯ã‚¿ãƒ¼ã«è¿½åŠ 
             sente_vector.push_back(temp_v);
         }
-        std::cout << "ƒxƒNƒ^[ƒTƒCƒY1F" << sente_vector.size() << std::endl;
+        std::cout << "ãƒ™ã‚¯ã‚¿ãƒ¼ã‚µã‚¤ã‚º1ï¼š" << sente_vector.size() << std::endl;
     }
 
     if (!gote_file) {
-        //ƒGƒ‰[ˆ—
-        std::cout << "ƒtƒ@ƒCƒ‹‚ª‘¶İ‚µ‚Ü‚¹‚ñB2" << std::endl;
+        //ã‚¨ãƒ©ãƒ¼å‡¦ç†
+        std::cout << "ãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã—ã¾ã›ã‚“ã€‚2" << std::endl;
     }
     else {
         while (std::getline(gote_file, gote_line)) {
             //std::cout << gote_line << std::endl;
             std::vector<std::string> temp_v = split(gote_line,",");
-            //ƒxƒNƒ^[‚É’Ç‰Á
+            //ãƒ™ã‚¯ã‚¿ãƒ¼ã«è¿½åŠ 
             gote_vector.push_back(temp_v);
         }
-        std::cout << "ƒxƒNƒ^[ƒTƒCƒY2F" << gote_vector.size() << std::endl;
+        std::cout << "ãƒ™ã‚¯ã‚¿ãƒ¼ã‚µã‚¤ã‚º2ï¼š" << gote_vector.size() << std::endl;
     }
 
     //std::string position_str = ("");
@@ -68,25 +68,25 @@ int main() {
 
     std::cout << "position_str:" << position_str << std::endl;
     std::vector< std::string > position_vector = split(position_str, " ");
-    //’…è‚Ì‚İ‚É‚·‚éB
-    //position,startpos,moves‚Ííœ‚·‚éB
+    //ç€æ‰‹ã®ã¿ã«ã™ã‚‹ã€‚
+    //position,startpos,movesã¯å‰Šé™¤ã™ã‚‹ã€‚
     for (int i = 0; i < position_vector.size(); i++) {
         if (position_vector[i]=="position" || position_vector[i] == "startpos" || position_vector[i] == "moves") {            
             std::string target_str = position_vector[i];
-            //íœ‚·‚éB
+            //å‰Šé™¤ã™ã‚‹ã€‚
             position_vector.erase(position_vector.begin()+i);
-            std::cout <<"íœ‚µ‚Ü‚·:" << target_str << std::endl;
+            std::cout <<"å‰Šé™¤ã—ã¾ã™:" << target_str << std::endl;
             i--;
         }
     }
-    std::cout << "position_vectorƒTƒCƒYF" << position_vector.size() << std::endl;
-    std::cout << "position_vector[0]F" << position_vector[0] << std::endl;
-    std::cout << "position_vector[1]F" << position_vector[1] << std::endl;
-    //std::cout << "position_vector[2]F" << position_vector[2] << std::endl;
-    //std::cout << "position_vector[3]F" << position_vector[3] << std::endl;
+    std::cout << "position_vectorã‚µã‚¤ã‚ºï¼š" << position_vector.size() << std::endl;
+    std::cout << "position_vector[0]ï¼š" << position_vector[0] << std::endl;
+    std::cout << "position_vector[1]ï¼š" << position_vector[1] << std::endl;
+    //std::cout << "position_vector[2]ï¼š" << position_vector[2] << std::endl;
+    //std::cout << "position_vector[3]ï¼š" << position_vector[3] << std::endl;
 
-    position_vector.clear();
-    std::cout << "position_vectorƒTƒCƒYF" << position_vector.size() << std::endl;
+    //position_vector.clear();
+    //std::cout << "position_vectorã‚µã‚¤ã‚ºï¼š" << position_vector.size() << std::endl;
 
     return (0);
 }
