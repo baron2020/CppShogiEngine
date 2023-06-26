@@ -119,7 +119,7 @@ int main() {
 
     }else {
         std::cout << "手数:" << now_position_vector.size() << " 後手です。" << std::endl;
-        std::cout << "gote_vector size:" << sente_vector.size() << std::endl;
+        std::cout << "gote_vector size:" << gote_vector.size() << std::endl;
         joseki_vector.clear();//定跡ベクターの初期化
 
         for (int i = 0; i < gote_vector.size(); i++) {
@@ -142,14 +142,7 @@ int main() {
                     }
                 }
             }
-
         }
-        std::cout << "先手、定跡候補種サイズ：" << joseki_vector.size() << std::endl;
-        std::cout << "先手、定跡候補種[0]：" << joseki_vector[0] << std::endl;
-        std::cout << "先手、定跡候補種[1]：" << joseki_vector[1] << std::endl;
-        std::cout << "先手、定跡候補種[2]：" << joseki_vector[2] << std::endl;
-        std::cout << "先手、定跡候補種[3]：" << joseki_vector[3] << std::endl;
-        std::cout << "先手、定跡候補種[4]：" << joseki_vector[4] << std::endl;
     }
 
     return (0);
